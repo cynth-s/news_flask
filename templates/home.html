@@ -29,6 +29,9 @@
                 align-self: center;
                 height: 70px;
                 width: 700px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 background-color:#f2f2f2;
                 padding: 20px;
                 border: 1px solid #ccc;
@@ -50,32 +53,33 @@
       width: 380px;
     }
     </style>
+
+    <!--<script src="request.js"></script> -->
+    
   </head>
+
+  
   <body>
     
    
     <!-- Navigation Bar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" id ="navbar">
       <a href="#" class="col-xs-4 navbar-brand">Daily News</a>
-      <ul class=" col-xs-4 navbar-nav mx-auto">
-        <li class="nav-item"><a href="#" class="nav-link">Science</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Sports</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Technology</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Politics</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Entertainment</a></li>
-        <i class="nav-item"><a href="#" class="nav-link">Health</a></li>
+          <ul class=" col-xs-4 navbar-nav mx-auto">
+            {% for category in categories %}
+            <li class="nav-item"><a href="/{{category}}" class="nav-link">{{category}}</a></li>
+            {% endfor %}
+          </ul>
           
       </ul>
     </nav>
   
     <div class="grid-container">
-        <div class="grid-item">Item 1</div>
-        <div class="grid-item">Item 2</div>
-        <div class="grid-item">Item 3</div>
-        <div class="grid-item">Item 4</div>
-        <div class="grid-item">Item 5</div>
-        <div class="grid-item">Item 6</div>
+        {% for url in urls %}
+        <a href="{{url}}" class="grid-item">{{url}}</a>
+        {% endfor %}
     </div>
+    
     <footer class="bg-dark text-center text-white">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
@@ -92,14 +96,10 @@
               <!--Grid column-->
               <div class="col-md-5 col-12">
                 <label for="country" id="ctry">Select Country:           </label>
-                <input list="countries" name="country" id="country">
-                <datalist id="countries">
-                  <option value="Australia">
-                  <option value="Argentina">
-                  <option value="China">
-                  <option value="India">
-                  <option value="Russia">
-                </datalist>
+                <select name = "country" id="country">
+                  <option selected="selected" value="uk">United Kingdom</option>
+                  <option value="ar">Argentina</option>
+                </select>
                 
               </div>
               <!--Grid column-->
@@ -119,8 +119,7 @@
         <!-- Section: Form -->
       </div>
       <!-- Grid container -->
-    
-      <!-- Copyright -->
+      
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         SourceCode
         <a class="text-white" href="https://github.com/cynth-s/news_flask/tree/main">GitHub</a>
