@@ -51,11 +51,9 @@
     #country{
       height: 40px;
       width: 380px;
-    }
+
     </style>
 
-    <!--<script src="request.js"></script> -->
-    
   </head>
 
   
@@ -67,7 +65,7 @@
       <a href="#" class="col-xs-4 navbar-brand">Daily News</a>
           <ul class=" col-xs-4 navbar-nav mx-auto">
             {% for category in categories %}
-            <li class="nav-item"><a href="/{{category}}" class="nav-link">{{category}}</a></li>
+            <li class="nav-item"><a href="/category/{{category}}" class="nav-link">{{category}}</a></li>
             {% endfor %}
           </ul>
           
@@ -81,50 +79,34 @@
     </div>
     
     <footer class="bg-dark text-center text-white">
-      <!-- Grid container -->
       <div class="container p-4 pb-0">
-        <!-- Section: Form -->
-        <section class="">
-          <form action="">
-            <!--Grid row-->
+          <form action="/category/{{category}}">
             <div class="row d-flex justify-content-center">
-              <!--Grid column-->
               <div class="col-auto">
               </div>
-              <!--Grid column-->
-    
-              <!--Grid column-->
               <div class="col-md-5 col-12">
                 <label for="country" id="ctry">Select Country:           </label>
                 <select name = "country" id="country">
-                  <option selected="selected" value="uk">United Kingdom</option>
-                  <option value="ar">Argentina</option>
+                  <option value="None" selected disabled hidden>Select country</option>
+                  {% for key,value in countries.items() %}
+                  print(key,value)
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
                 </select>
-                
               </div>
-              <!--Grid column-->
-    
-              <!--Grid column-->
               <div class="col-auto">
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-outline-light mb-4">
+                <button type="submit" value="code" class="btn btn-outline-light mb-4">
                   Submit
                 </button>
               </div>
-              <!--Grid column-->
             </div>
-            <!--Grid row-->
           </form>
-        </section>
-        <!-- Section: Form -->
       </div>
-      <!-- Grid container -->
       
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         SourceCode
         <a class="text-white" href="https://github.com/cynth-s/news_flask/tree/main">GitHub</a>
       </div>
-      <!-- Copyright -->
     </footer>
     
    
